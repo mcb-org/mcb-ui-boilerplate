@@ -6,7 +6,6 @@ import {
 } from "react";
 import { AuthContext, type User } from "./authContext";
 
-
 export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     return !!localStorage.getItem("authToken");
@@ -22,12 +21,15 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const login = useCallback(async (email: string, password: string) => {
     setLoading(true);
     try {
-      // Mock login - replace with real API call
+      const saved = localStorage.getItem("user");
+      const parsedUser = saved ? (JSON.parse(saved) as User) : null;
+      const fallbackName = email.split("@")[0]?.replace(/[._-]/g, " ").replace(/\b\w/g, (char) => char.toUpperCase()) || "Starter User";
+
       const mockUser: User = {
-        id: 1,
+        id: parsedUser?.id ?? 1,
         email,
         password,
-        name: "John Doe",
+        name: parsedUser?.name ?? fallbackName,
       };
 
       localStorage.setItem("authToken", "mock-token-123");

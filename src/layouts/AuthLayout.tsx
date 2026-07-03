@@ -6,23 +6,9 @@ interface AuthLayoutProps {
 
 const AuthLayout: FC<AuthLayoutProps> = ({ children }) => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br ">
-      <div className="w-full max-w-md p-6 bg-white rounded-xl shadow-2xl">
-        {/* Logo/Brand */}
-        <div className="mb-6 text-center">
-          <div className="w-12 h-12 mx-auto rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold text-xl">
-            MC
-          </div>
-          <h1 className="mt-3 text-2xl font-bold text-gray-900">Medi Car</h1>
-            </div>
-
-        {/* Content */}
+    <div className="min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_top_right,rgba(124,58,237,0.2),transparent_26%),radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.14),transparent_22%),linear-gradient(180deg,#f8fafc_0%,#eef2ff_48%,#f8fafc_100%)] px-4 py-5 sm:px-6 lg:px-8 lg:py-8">
+      <div className="mx-auto flex min-h-[calc(100vh-2.5rem)] w-full max-w-[1440px] items-center justify-center lg:min-h-[calc(100vh-4rem)]">
         {children}
-
-        {/* Footer */}
-        <div className="mt-6 text-center text-xs text-gray-400">
-          <p>&copy; 2026 Medi Care. All rights reserved.</p>
-        </div>
       </div>
     </div>
   );
